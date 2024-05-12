@@ -38,14 +38,14 @@ if ! command -v docker >/dev/null; then
 fi
 
 # 检查是否安装了Docker Compose
-if ! command -v docker-compose >/dev/null; then
+if ! command -v docker compose >/dev/null; then
     echo "Docker Compose is not installed. Do you want to install it? (yes/no)"
     read -r answer
     if [ "$answer" = "yes" ]; then
         # 获取最新版本
         COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | grep '"tag_name":' | cut -d '"' -f 4)
-        sudo curl -L "https://github.com/docker/compose/releases/download/$COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        sudo chmod +x /usr/local/bin/docker-compose
+        sudo curl -L "https://github.com/docker/compose/releases/download/$COMPOSE_VERSION/docker compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker compose
+        sudo chmod +x /usr/local/bin/docker compose
     else
         echo "Docker Compose is required. Exiting."
         exit 1
@@ -256,5 +256,5 @@ services:
 EOL
 
 
-docker-compose down
-docker-compose up -d
+docker compose down
+docker compose up -d
