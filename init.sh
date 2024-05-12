@@ -266,7 +266,7 @@ cd gost
 wget https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240426/gost_3.0.0-nightly.20240426_linux_amd64.tar.gz
 tar -zxvf gost_3.0.0-nightly.20240426_linux_amd64.tar.gz
 rm -rf gost_3.0.0-nightly.20240426_linux_amd64.tar.gz
-cat > config/config.json <<EOL
+cat > gost.yml <<EOL
 services:
 - name: service-0
   addr: ":8080"
