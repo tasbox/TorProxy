@@ -1,5 +1,7 @@
 #!/bin/bash
 
+yum -y install git vim wget
+
 # 检查输入参数,如何输入参数小于1，就打印提示，如果输入为1，就是设置的端口，否则需要输入3三个参数，分别为用户名和密码
 if [ $# -lt 1 ]; then
     echo "Usage: $0 <port> [username] [password]"
