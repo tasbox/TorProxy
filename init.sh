@@ -255,6 +255,6 @@ services:
       - "127.0.0.1:9050:9050" # Tor proxy
 EOL
 
-systemcel restart docker
+systemctl restart docker
 docker compose down
 docker compose up -d
