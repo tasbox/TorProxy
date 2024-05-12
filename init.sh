@@ -256,5 +256,35 @@ services:
 EOL
 
 systemctl restart docker
+
 docker compose down
 docker compose up -d
+
+cd ..
+mkdir gost
+cd gost
+wget https://github.com/go-gost/gost/releases/download/v3.0.0-nightly.20240426/gost_3.0.0-nightly.20240426_linux_amd64.tar.gz
+tar -zxvf gost_3.0.0-nightly.20240426_linux_amd64.tar.gz
+rm -rf gost_3.0.0-nightly.20240426_linux_amd64.tar.gz
+cat > config/config.json <<EOL
+services:
+- name: service-0
+  addr: ":8080"
+  handler:
+    type: http
+    chain: chain-0
+  listener:
+    type: tcp
+chains:
+- name: chain-0
+  hops:
+  - name: hop-0
+    nodes:
+    - name: node-0
+      addr: 127.0.0.1:6666
+      connector:
+        type: socks5
+      dialer:
+        type: tcp
+EOL
+./gost
